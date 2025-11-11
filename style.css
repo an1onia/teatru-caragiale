@@ -1,9 +1,76 @@
 h1 {
     text-align: center;
+    font-size: 100px;
     background-color: rgb(99, 10, 10);
-    caret-color: white;
+    color: white;              
+    padding: 300px;           
+    margin: 0;                 
+    font-family: 'Blippo', 'fantasy';
 }
 
-.navbar ul{
 
+.navbar ul {
+    list-style: none;
+    background: linear-gradient(to right, rgb(99, 10, 10) 0 1453px, aliceblue 800px 100% );
+    padding: 0;
+    margin: 0;
+    display: flex;   
+    justify-content: flex-end;
+}
+
+.navbar li {
+    border-left: 2px solid rgb(77, 5, 5); 
+    border-bottom: 2px solid rgb(77, 5, 5);
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    display:block;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.spectacole {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100%;
+}
+
+.row {
+    display: flex;          
+    flex-wrap: wrap;        
+    justify-content: space-between; /
+}
+
+.spectacole h1 {
+    background-color: rgb(99, 10, 10);
+    color: white;
+    padding: 25px 30px; 
+}
+
+.spectacole-col {
+    flex-basis: 31%;        
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    box-sizing: border-box; 
+}
+
+.spectacole-col img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.spectacole-col p {
+    padding: 0;
+}
+
+.spectacole-col h3 {
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: left;
 }
