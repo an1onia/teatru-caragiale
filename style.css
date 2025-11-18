@@ -35,9 +35,9 @@ h1 {
 
 .spectacole {
     width: 100%;
-    margin: auto;
+    margin: 0;
     text-align: center;
-    padding-top: 100%;
+    padding: 0 12px 12px; /* minimal section padding; title band keeps its own padding */
 }
 
 .row {
@@ -47,9 +47,13 @@ h1 {
 }
 
 .spectacole h1 {
+    display: block;
+    width: 100%;
     background-color: rgb(99, 10, 10);
     color: white;
-    padding: 25px 30px; 
+    padding: 22px 30px; /* keep the band height */
+    margin: 0 0 12px; /* small gap after band */
+    box-sizing: border-box;
 }
 
 .spectacole-col {
@@ -74,3 +78,198 @@ h1 {
     margin-bottom: 15px;
     text-align: left;
 }
+
+/* --- Pure-CSS carousel styles (4 items per page) --- */
+.spectacole-carousel {
+    position: relative;
+    width: 100%;
+    margin: 20px auto 60px;
+}
+.carousel-input {
+    display: none;
+}
+.carousel {
+    overflow: hidden;
+    width: 100%;
+}
+.carousel-track {
+    display: flex;
+    transition: transform 0.45s ease;
+    will-change: transform;
+}
+.carousel-track .spectacole-col {
+    flex: 0 0 25%; /* 4 per page */
+    box-sizing: border-box;
+    margin-bottom: 0; /* handled by carousel spacing */
+    padding: 0 12px;
+}
+.carousel-track .spectacole-col p {
+    font-size: 0.95rem;
+}
+
+.carousel-controls {
+    position: absolute;
+    inset: 0; /* allow positioning children left/right */
+    pointer-events: none; /* let labels individually receive pointer events */
+    z-index: 4;
+}
+.carousel-controls .arrow {
+    pointer-events: auto;
+    background: rgb(99, 10, 10);
+    color: #fff;
+    border-radius: 50%;
+    padding: 8px 11px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* hidden by default; shown per-page */
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.carousel-controls .arrow.left { left: 8px; }
+.carousel-controls .arrow.right { right: 8px; }
+
+/* Page transforms: page1 = show first 4 items, page2 = shift left by 100% (i.e. next 4 items) */
+#page1:checked ~ .carousel .carousel-track { transform: translateX(0); }
+#page2:checked ~ .carousel .carousel-track { transform: translateX(-100%); }
+
+/* Visibility rules per page:
+   - page1: show only right arrow on the right side
+   - middle pages (if present): show both left and right
+   - last page: show only left arrow on the left side
+   For this two-page setup page2 is last.
+*/
+#page1:checked ~ .carousel-controls .show-on-page1 { display: inline-block; }
+#page1:checked ~ .carousel-controls .show-on-page1.left { display: none; }
+#page1:checked ~ .carousel-controls .show-on-page1.right { display: inline-block; }
+
+#page2:checked ~ .carousel-controls .show-on-page2 { display: inline-block; }
+#page2:checked ~ .carousel-controls .show-on-page2.right { display: none; }
+#page2:checked ~ .carousel-controls .show-on-page2.left { display: inline-block; }
+
+/* Small screens: allow items to shrink but keep layout usable */
+@media (max-width: 900px) {
+    .carousel-track .spectacole-col { flex: 0 0 50%; }
+    }
+
+@media (max-width: 480px) {
+    .carousel-track .spectacole-col { flex: 0 0 100%; }
+}
+
+
+.actori {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding: 0 12px 12px; /* minimal section padding; title band keeps its own padding */
+}
+
+.row {
+    display: flex;          
+    flex-wrap: wrap;        
+    justify-content: space-between; /
+}
+
+.actori h1 {
+    display: block;
+    width: 100%;
+    background-color: rgb(99, 10, 10);
+    color: white;
+    padding: 22px 30px; /* keep the band height */
+    margin: 0 0 12px;
+    box-sizing: border-box;
+}
+
+.actori-np {
+    flex-basis: 31%;        
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    box-sizing: border-box; 
+}
+
+.actori-np img {
+    width: 100%;
+    border-radius: 10px;
+    flex-basis: 50%;
+}
+
+.actori-carousel {
+    position: relative;
+    width: 100%;
+    margin: 20px auto 60px;
+}
+.carousel-input-1 {
+    display: none;
+}
+.carousel-1 {
+    overflow: hidden;
+    width: 100%;
+}
+.carousel-track-1 {
+    display: flex;
+    transition: transform 0.45s ease;
+    will-change: transform;
+}
+.carousel-track-1 .actori-np {
+    flex: 0 0 90%; 
+    box-sizing: border-box;
+    margin-bottom: 0; 
+    padding: 0 12px;
+}
+
+.carousel-controls-1 {
+    position: absolute;
+    inset: 0; /* allow positioning children left/right */
+    pointer-events: none; /* let labels individually receive pointer events */
+    z-index: 4;
+}
+.carousel-controls-1 .arrow {
+    pointer-events: auto;
+    background: rgb(99, 10, 10);
+    color: #fff;
+    border-radius: 50%;
+    padding: 8px 11px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* hidden by default; shown per-page */
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.carousel-controls-1 .arrow.left { left: 8px; }
+.carousel-controls-1 .arrow.right { right: 8px; }
+
+#page1:checked ~ .carousel-1 .carousel-track-1 { transform: translateX(0); }
+#page2:checked ~ .carousel-1 .carousel-track-1 { transform: translateX(-100%); }
+
+#page1:checked ~ .carousel-controls-1 .show-on-page1-1 { display: inline-block; }
+#page1:checked ~ .carousel-controls-1 .show-on-page1-1.left { display: none; }
+#page1:checked ~ .carousel-controls-1 .show-on-page1-1.right { display: inline-block; }
+
+#page2:checked ~ .carousel-controls-1 .show-on-page2-1 { display: inline-block; }
+#page2:checked ~ .carousel-controls-1 .show-on-page2-1.right { display: none; }
+#page2:checked ~ .carousel-controls-1 .show-on-page2-1.left { display: inline-block; }
+
+/* New actors carousel styles (6 per page) */
+.actors-carousel { position: relative; max-width: 1600px; margin: 24px auto; }
+.actors-carousel .carousel { overflow: hidden; }
+.actors-track { display: flex; transition: transform 0.6s ease-in-out; }
+.actors-track .actor-card { flex: 0 0 16.6666%; padding: 6px 6px; box-sizing: border-box; text-align: center; }
+.actors-track .actor-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; display: block; max-height: 300px; }
+.actors-track .actor-card h3 { margin: 8px 0 0; font-size: 0.95rem; }
+.actors-track .actor-card.empty { visibility: hidden; }
+
+/* transforms for actors pages */
+#actors-slide1:checked ~ .carousel.actors .actors-track { transform: translateX(0%); }
+#actors-slide2:checked ~ .carousel.actors .actors-track { transform: translateX(-100%); }
+#actors-slide3:checked ~ .carousel.actors .actors-track { transform: translateX(-200%); }
+
+/* actors controls visibility */
+.actors-controls .arrow { display: none; }
+#actors-slide1:checked ~ .actors-controls .show-on-actors-slide1.right { display: inline-flex; }
+#actors-slide2:checked ~ .actors-controls .show-on-actors-slide2.left { display: inline-flex; }
+#actors-slide2:checked ~ .actors-controls .show-on-actors-slide2.right { display: inline-flex; }
+#actors-slide3:checked ~ .actors-controls .show-on-actors-slide3.left { display: inline-flex; }
