@@ -273,3 +273,4 @@ h1 {
 #actors-slide2:checked ~ .actors-controls .show-on-actors-slide2.left { display: inline-flex; }
 #actors-slide2:checked ~ .actors-controls .show-on-actors-slide2.right { display: inline-flex; }
 #actors-slide3:checked ~ .actors-controls .show-on-actors-slide3.left { display: inline-flex; }
+
