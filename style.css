@@ -300,6 +300,55 @@ h1 {
 #actors-slide2:checked ~ .actors-controls .show-on-actors-slide2.right { display: inline-flex; }
 #actors-slide3:checked ~ .actors-controls .show-on-actors-slide3.left { display: inline-flex; }
 
+/* Photos carousel styles (6 per page) */
+.photos-carousel { position: relative; max-width: 1600px; margin: 24px auto; }
+.photos-carousel .carousel { overflow: hidden; }
+.photos-track { display: flex; transition: transform 0.6s ease-in-out; }
+.photos-track .photo-card { flex: 0 0 16.6666%; padding: 6px 6px; box-sizing: border-box; text-align: center; }
+.photos-track .photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; display: block; max-height: 300px; }
+.photos-track .photo-card h3 { margin: 8px 0 0; font-size: 0.95rem; }
+.photos-track .photo-card p { margin: 4px 0 0; font-size: 0.8rem; line-height: 1.2; }
+.photos-track .photo-card.empty { visibility: hidden; }
+
+/* transforms for photos pages */
+#photos-slide1:checked ~ .carousel.photos .photos-track { transform: translateX(0%); }
+#photos-slide2:checked ~ .carousel.photos .photos-track { transform: translateX(-100%); }
+#photos-slide3:checked ~ .carousel.photos .photos-track { transform: translateX(-200%); }
+#photos-slide4:checked ~ .carousel.photos .photos-track { transform: translateX(-300%); }
+
+/* photos controls visibility */
+.photos-controls .arrow { display: none; }
+#photos-slide1:checked ~ .photos-controls .show-on-photos-slide1.right { display: inline-flex; }
+#photos-slide2:checked ~ .photos-controls .show-on-photos-slide2.left { display: inline-flex; }
+#photos-slide2:checked ~ .photos-controls .show-on-photos-slide2.right { display: inline-flex; }
+#photos-slide3:checked ~ .photos-controls .show-on-photos-slide3.left { display: inline-flex; }
+#photos-slide3:checked ~ .photos-controls .show-on-photos-slide3.right { display: inline-flex; }
+#photos-slide4:checked ~ .photos-controls .show-on-photos-slide4.left { display: inline-flex; }
+
+#photos-section h1 {
+    width: 100%;
+    background-color: rgb(99, 10, 10);
+    color: white;
+    padding: 22px 30px; 
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+    text-align: center; 
+}
+
+#hero-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#hero-images img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 .despre_noi {
     padding: 40px 20px;
     font-family: Arial, sans-serif;
@@ -380,41 +429,3 @@ h1 {
     color: #000;
 }
 
-/* Responsiv – pe ecrane mici contactele vin sub hartă */
-@media (max-width: 900px) {
-    .despre_noi h2 {
-        position: static;         /* revine la flux normal pe mobil */
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    .maps {
-        margin-top: 20px;
-    }
-}
-
-/* Console Button Styling */
-.button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 16px;
-    background-color: rgb(99, 10, 10);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Courier New', monospace;
-    z-index: 1000;
-    font-size: 12px;
-    transition: all 0.3s ease;
-}
-
-.button:hover {
-    background-color: rgb(130, 15, 15);
-    transform: scale(1.05);
-}
-
-.button:active {
-    transform: scale(0.95);
-}
